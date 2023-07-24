@@ -63,15 +63,4 @@ export class FilmsController {
   getFilms(): Promise<IResponse> {
     return this.filmsService.getAllFilms();
   }
-
-  @ApiOperation({
-    summary: 'Health Check Endpoint',
-    description: 'Checks Health of server and if it runs',
-  })
-  @Get('/health-check')
-  healthCheck(): string {
-    return `Server's running normally on http://localhost${
-      process.env.PORT || 3000
-    }/api.\n Nothing to worry about`;
-  }
 }
