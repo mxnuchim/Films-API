@@ -21,11 +21,13 @@ export class AppController {
 
   @ApiOperation({
     summary: 'Health Check Endpoint',
-    description: 'Checks Health of server and if it runs',
+    description: `Checks health of server and if it runs. Fire it up here or at http://localhost:${
+      process.env.PORT || 3000
+    }/api/health-check`,
   })
   @Get('/health-check')
   healthCheck(): string {
-    return `Server's running normally on http://localhost${
+    return `Server's running normally on http://localhost:${
       process.env.PORT || 3000
     }/api.\nNothing to worry about.`;
   }

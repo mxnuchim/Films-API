@@ -58,7 +58,7 @@ export class FilmsService {
       return handleResponse({
         success: true,
         message: 'Films created successfully',
-        data: [createdFilms],
+        data: createdFilms,
       });
     } catch (error) {
       return handleResponse({

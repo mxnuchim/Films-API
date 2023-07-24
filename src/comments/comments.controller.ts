@@ -28,11 +28,9 @@ export class CommentsController {
   @ApiOperation({
     summary: 'Create a comment',
     description:
-      'Create a comment for a film. film id and content of the comment are required fields',
+      'Create a comment for a film using film id and content of the comment are required fields',
   })
   @ApiCreatedResponse({ description: 'Created comment successfully' })
-  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
-  @ApiUnprocessableEntityResponse({ description: 'Bad Request' })
   @Post('/create-comment')
   create(@Body() createCommentDto: CreateCommentDto): Promise<IResponse> {
     return this.commentsService.createComment(createCommentDto);
@@ -43,15 +41,23 @@ export class CommentsController {
     description: 'Get comments for film using film id',
   })
   @ApiOkResponse({ description: 'Retrieved comments successfully' })
-  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   @ApiNotFoundResponse({
     description: 'Film does not exist or has been taken down',
   })
-  @ApiUnprocessableEntityResponse({ description: 'Bad Request' })
   @Get('/get/:filmId')
   async getCommentsForFilm(
     @Param('filmId') film_id: string,
   ): Promise<IResponse> {
     return this.commentsService.getCommentsForFilm(film_id);
+  }
+
+  @ApiOperation({
+    summary: 'Delete a comment',
+    description: 'Delete a comment for a film',
+  })
+  @ApiCreatedResponse({ description: 'Created comment successfully' })
+  @Delete('/delete-comment/:commentId')
+  deleteCommennt(@Param('commentId') commentId: string): Promise<IResponse> {
+    return this.commentsService.deleteComment(commentId);
   }
 }

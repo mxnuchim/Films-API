@@ -6,6 +6,7 @@ import { Film } from 'src/films/interfaces/film.interface';
 import { handleResponse } from 'src/utils/handleResponse';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
+import { Comment } from './interfaces/comment.interface';
 
 @Injectable()
 export class CommentsService {
@@ -91,13 +92,60 @@ export class CommentsService {
       return handleResponse({
         message: 'Fetched comments successfully',
         success: true,
-        data: [comments],
+        data: comments,
       });
     } catch (error) {
       return handleResponse({
         message: `Couldn't fetch comments. Something went wrong`,
         success: false,
         data: [],
+      });
+    }
+  }
+
+  async deleteComment(commentId: string): Promise<IResponse> {
+    try {
+      const comment: Comment = await this.commentModel.findOne({
+        _id: commentId,
+      });
+
+      if (!comment) {
+        return handleResponse({
+          message: 'Comment not found',
+          success: false,
+          data: [new HttpException('Not found', HttpStatus.NOT_FOUND)],
+        });
+      }
+
+      const filmId = comment?.film_id;
+      const deletedComment = await this.commentModel.findByIdAndDelete(
+        commentId,
+      );
+
+      if (!deletedComment) {
+        return handleResponse({
+          message: 'Failed to delete comment. Please try again',
+          success: false,
+          data: [],
+        });
+      }
+
+      // Update the film's comments count
+      await this.filmModel.updateOne(
+        { _id: filmId },
+        { $inc: { comments: -1 } },
+      );
+
+      return handleResponse({
+        message: 'Successfully deleted the comment',
+        success: true,
+        data: [deletedComment],
+      });
+    } catch (error) {
+      return handleResponse({
+        message: error?.message || 'Something went wrong',
+        success: false,
+        data: [new HttpException('Invalid request', HttpStatus.BAD_REQUEST)],
       });
     }
   }

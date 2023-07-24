@@ -1,74 +1,92 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Films API with NestJS and MongoDB
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![NestJS Logo](https://nestjs.com/img/logo_text.svg)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This is my submission. This project is a Films API developed using NestJS, MongoDB, and GitHub Actions for CI/CD. It provides endpoints to manage film data, add comments and fetch films and comments. The application is designed to run on port 3000 and is integrated with an automated CI/CD pipeline for seamless integration and deployment to AWS EC2, which serves as the production environment.
 
-## Description
+## Table of Contents
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+- [API Endpoints](#api-endpoints)
+- [Continuous Integration and Deployment](#continuous-integration-and-deployment)
+- [Technologies Used](#technologies-used)
+- [License](#license)
 
-## Installation
+## Getting Started
 
-```bash
-$ yarn install
-```
+### Prerequisites
 
-## Running the app
+To run this application locally, ensure you have the following installed on your system:
+
+- Node.js (version 18.x or later)
+- npm (Node Package Manager)
+- MongoDB (Make sure MongoDB is running on your local machine or provide the connection details of your MongoDB server in the application configuration). I have provided my database URL temporarily for your review.
+
+### Installation
+
+1. Clone the repository to your local machine:
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+git clone https://github.com/mxnuchim/films-api.git
 ```
 
-## Test
+2. Change into the project directory:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+cd films-api
 ```
 
-## Support
+3. Install dependencies:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npm install
+```
 
-## Stay in touch
+```bash
+yarn
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Running the application
 
-## License
+1. To start the Films API server locally, run the following command:
 
-Nest is [MIT licensed](LICENSE).
-# films_api
+```bash
+npm run start:dev
+```
+
+The server will be accessible at http://localhost:3000.
+
+### API Endpoints
+
+The following API endpoints are available:
+
+- POST /api/films/create-films: Creates films in the database
+- GET /api/films/get-films: Retrieves all films in the database
+- GET /api/health-check: Checks health of API and ensures it runs
+- POST /api/comments/create-comment: Creates a comment for a film
+- GET /api/comments/get/:{filmId}: Get comments for a film
+- POST /api/comments/delete-comment: Deletes a comment for a film
+
+### Continuous Integration and Deployment (CI/CD)
+
+This project is integrated with GitHub Actions for automated CI/CD. The CI/CD pipeline is triggered on each push to the main branch and each pull request targeting the main branch. The pipeline includes the following steps:
+
+- Install Node.js and dependencies
+- Build the application
+- Restart the server using PM2
+- After successful CI/CD, the code is automatically deployed to the production environment on AWS EC2.
+
+### Technologies Used
+
+- NestJS
+- MongoDB
+- GitHub Actions
+- AWS EC2
+
+### License
+
+This project is licensed under the MIT License.
+This single markdown file contains all the sections and content from the previous version. Feel free to copy and use it for your project. Remember to adjust any placeholder URLs or customize the content to match your actual project details.
