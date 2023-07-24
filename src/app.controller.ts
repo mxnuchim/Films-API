@@ -27,7 +27,7 @@ export class AppController {
   })
   @Get('/health-check')
   healthCheck(): string {
-    return `Server's running normally on http://localhost:${
+    return `Server's running normally on http://54.85.105.192:${
       process.env.PORT || 3000
     }/api.\nNothing to worry about.`;
   }
