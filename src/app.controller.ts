@@ -21,7 +21,7 @@ export class AppController {
 
   @ApiOperation({
     summary: 'Health Check Endpoint',
-    description: `Checks health of server and if it runs. Fire it up here or at http://localhost:${
+    description: `Checks health of server and if it runs. Fire it up here or at http://54.85.105.192:${
       process.env.PORT || 3000
     }/api/health-check`,
   })
