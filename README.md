@@ -2,7 +2,14 @@
 
 ![NestJS Logo](https://nestjs.com/img/logo_text.svg)
 
-This is my submission. This project is a Films API developed using NestJS, MongoDB, and GitHub Actions for CI/CD. It provides endpoints to manage film data, add comments and fetch films and comments. The application is designed to run on port 3000 and is integrated with an automated CI/CD pipeline for seamless integration and deployment to AWS EC2, which serves as the production environment.
+This is my submission. This project is a Films API developed using NestJS, MongoDB, and GitHub Actions for CI/CD. It provides endpoints to manage film data, add comments and fetch films and comments. I have used a modular and component-based approach, making it easy to organize the code into separate modules responsible for different parts of the application.
+
+### Components:
+
+1. **Controllers**: Handle incoming requests and delegate the business logic to appropriate services.
+2. **Services**: Contain the business logic and interact with the MongoDB database using the Data Access Layer.
+3. **Data Access Layer**: Encapsulates the interactions with the MongoDB database using Mongoose, providing a simple and efficient way to work with the data.
+4. **Models**: Define the data structure and schema for the MongoDB documents, allowing seamless communication with the database.
 
 ## Table of Contents
 
@@ -85,6 +92,7 @@ This project is integrated with GitHub Actions for automated CI/CD. The CI/CD pi
 - MongoDB
 - GitHub Actions
 - AWS EC2
+- Nginx
 
 ### License
 
