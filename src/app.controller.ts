@@ -12,7 +12,7 @@ export class AppController {
    */
   @ApiOperation({
     summary: 'Default route',
-    description: 'This is the root route "/" You can check it out',
+    description: 'This is the home route "/" You can check it out',
   })
   @Get()
   getHello(): string {
