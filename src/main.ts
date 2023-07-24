@@ -8,7 +8,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Films API')
-    .setDescription('Films API submission for M. Oliver')
+    .setDescription('Films API (Stage Two submission for M. Oliver)')
     .setVersion('1.0')
     .addTag('films')
     .build();
