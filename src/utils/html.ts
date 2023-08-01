@@ -41,6 +41,16 @@ export const htmlContent = `
             .api-docs-link:hover {
               border-color: transparent;
             }
+            /* Styles for the logos */
+            .logos-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-top: 20px;
+            }
+            .logo {
+              margin: 10px;
+            }
             /* Media Query for Mobile Devices */
             @media (max-width: 768px) {
               body {
@@ -48,14 +58,25 @@ export const htmlContent = `
                 margin-left: 5%; /* Optional: Apply a smaller margin on the left */
                 margin-right: 5%; /* Optional: Apply a smaller margin on the right */
               }
+              .logos-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              }
+              .logo {
+                margin: 25px;
+              }
             }
           </style>
         </head>
         <body>
           <h1>Films API with NestJS, TypeScript and MongoDB</h1>
-          <p>
-            <img src="https://nestjs.com/img/logo_text.svg" alt="NestJS Logo" width="200" height="auto">
-          </p>
+          <div class="logos-container">
+            <img class="logo" src="https://nestjs.com/img/logo_text.svg" alt="NestJS Logo" width="200" height="auto">
+            <img class="logo" src="https://www.mongodb.com/assets/images/global/leaf.png" alt="MongoDB Logo" width="200" height="auto">
+            <img class="logo" src="https://seeklogo.com/images/T/typescript-logo-B29A3F462D-seeklogo.com.png" alt="TypeScript Logo" width="200" height="auto">
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png" alt="GitHub Logo" width="200" height="auto">
+          </div>
           <p>
             This project is a Films API developed using NestJS, MongoDB, and GitHub Actions for CI/CD. It provides endpoints to manage film data, add comments, and fetch films and comments.
           </p>
