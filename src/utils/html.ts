@@ -144,7 +144,7 @@ export const htmlContent = `
             Now that you set it up, check out the API documentation at <a class="api-docs-link" href="http://localhost:3000/api/docs">http://localhost:3000/api/docs</a>.
           </p>
 
-          <h2 id="api-endpoints">API Endpoints</h2>
+          <h2 id="api-endpoints">API Endpoints in this project</h2>
           <p>
             The following API endpoints are available:
           </p>
