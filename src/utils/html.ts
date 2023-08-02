@@ -70,9 +70,7 @@ export const htmlContent = `
           </style>
         </head>
         <body>
-          <h1>Films API Submission with NestJS, TypeScript and MongoDB</h1>
-          <h2>Author: Manuchimso Oliver</h2>
-          <h3>Date: Wednesday, 2nd Auguat 2023.</h3>
+          <h1>Films API Submission with NestJS, TypeScript and MongoDB by Manuchimso Oliver</h1>
           <div class="logos-container">
             <img class="logo" src="https://nestjs.com/img/logo_text.svg" alt="NestJS Logo" width="200" height="auto">
             <img class="logo" src="https://www.mongodb.com/assets/images/global/leaf.png" alt="MongoDB Logo" width="200" height="auto">
