@@ -20,6 +20,7 @@ import {
   ApiTags,
   ApiUnprocessableEntityResponse,
 } from '@nestjs/swagger';
+import { UpdateFilmsDTO } from './dto/update.films.dto';
 
 @ApiTags('films')
 @Controller('films')
@@ -62,5 +63,25 @@ export class FilmsController {
   @Get('/get-films')
   getFilms(): Promise<IResponse> {
     return this.filmsService.getAllFilms();
+  }
+
+  /**
+   *
+   * @body {event: string}
+   * @returns gets the latest films and updates the db with them
+   */
+  @ApiOperation({
+    summary: 'Listener for updating films',
+    description: 'Fetches films from Swapi API and updates our database',
+  })
+  @ApiOkResponse({ description: 'Updated films successfully' })
+  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
+  @ApiNotFoundResponse({
+    description: 'No films to add',
+  })
+  @ApiUnprocessableEntityResponse({ description: 'Bad Request' })
+  @Post('/update-films')
+  updateFilms(@Body() updateFilmsDTO: UpdateFilmsDTO): Promise<IResponse> {
+    return this.filmsService.updateFilms(updateFilmsDTO);
   }
 }

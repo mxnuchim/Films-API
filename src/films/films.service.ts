@@ -1,8 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import axios from 'axios';
 import { Model } from 'mongoose';
 import { IResponse } from 'src/common/interfaces/response.interface';
 import { handleResponse } from 'src/utils/handleResponse';
+import { UpdateFilmsDTO } from './dto/update.films.dto';
 import { Film } from './interfaces/film.interface';
 
 @Injectable()
@@ -90,6 +92,48 @@ export class FilmsService {
         message: 'Films retrieved successfully',
         data: films,
       });
+    } catch (error) {
+      return handleResponse({
+        success: false,
+        message: error?.message || 'Something went wrong',
+        data: error,
+      });
+    }
+  }
+
+  async updateFilms(updateFilmsDTO: UpdateFilmsDTO): Promise<IResponse> {
+    try {
+      const { event } = updateFilmsDTO;
+
+      const swapiUrl = 'https://swapi.dev/api/films';
+
+      if (event === 'films.created') {
+        const response = await axios.get(swapiUrl);
+
+        const data = response?.data?.results;
+
+        const createdFilms = await this.createMany(data);
+
+        if (createdFilms) {
+          return handleResponse({
+            success: true,
+            message: 'Films created successfully',
+            data: [],
+          });
+        } else {
+          return handleResponse({
+            success: false,
+            message: '',
+            data: [],
+          });
+        }
+      } else {
+        return handleResponse({
+          success: true,
+          message: 'No new films',
+          data: [],
+        });
+      }
     } catch (error) {
       return handleResponse({
         success: false,
