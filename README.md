@@ -76,6 +76,7 @@ The following API endpoints are available:
 - POST /api/comments/create-comment: Creates a comment for a film
 - GET /api/comments/get/:{filmId}: Get comments for a film
 - POST /api/comments/delete-comment: Deletes a comment for a film
+- POST /api/comments/update-films: Fetches films from swapi api and updates db using them
 
 ### Continuous Integration and Deployment (CI/CD)
 
